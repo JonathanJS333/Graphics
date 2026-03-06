@@ -36,14 +36,87 @@ export class CanvasLocal {
   /*fx(x:number):number {
     return Math.sin(x*2.5);
   }*/
-
-
+  // Triangles.java: This program draws 50 triangles inside each other.
   paint() {
-    
+    // limpia
+    this.graphics.clearRect(0, 0, this.maxX + 1, this.maxY + 1);
+    this.graphics.strokeStyle = 'black';   // estilo
+    this.graphics.lineWidth = 1;
 
-    this.drawLine(100.5,100, 500,100.5);
-    this.drawLine(500, 100, 300, 400);
-    this.drawLine(300, 400, 100,100);
+    const size = Math.min(this.maxX, this.maxY) * 0.8;
+    const half = size / 2;
+
+    let xA = this.centerX - half;
+    let yA = this.centerY - half;
+    let xB = this.centerX + half;
+    let yB = this.centerY - half;
+    let xC = this.centerX + half;
+    let yC = this.centerY + half;
+    let xD = this.centerX - half;
+    let yD = this.centerY + half;
+    const q = 0.05;
+    const p = 1 - q;
+
+    for (let i = 0; i < 50; i++) {
+      // dibujar cuadrado
+    this.graphics.beginPath();
+    this.graphics.moveTo(xA, yA);
+    this.graphics.lineTo(xB, yB);
+    this.graphics.lineTo(xC, yC);
+    this.graphics.lineTo(xD, yD);
+    this.graphics.closePath();
+    this.graphics.stroke();
+
+      // calcula el siguiente cuadrado
+    const xA1 = p * xA + q * xB;
+    const yA1 = p * yA + q * yB;
+    const xB1 = p * xB + q * xC;
+    const yB1 = p * yB + q * yC;
+    const xC1 = p * xC + q * xA;
+    const yC1 = p * yC + q * yA;
+    const xD1 = p * xD + q * xA;
+    const yD1 = p * yD + q * yA;
+
+    xA = xA1;
+    yA = yA1;
+    xB = xB1;
+    yB = yB1;
+    xC = xC1;
+    yC = yC1;
+    xD = xD1;
+    yD = yD1;
+    }
+
+  /*public void paint(Graphics g)
+    { initgr();
+    float side = 0.95F * minMaxXY, sideHalf = 0.5F * side,
+    h = sideHalf * (float)Math.sqrt (3),
+    xA, yA, xB, yB, xC, yC,
+    xA1, yA1, xB1, yB1, xC1, yC1, p, q;
+    q = 0.05F;
+    p = 1 - q;
+    xA = xCenter - sideHalf;
+    yA = yCenter - 0.5F * h;
+    xB = xCenter + sideHalf;
+    yB = yA;
+    xC = xCenter;
+    yC = yCenter + 0.5F * h;
+    for (int i=0; i<50; i++)
+    { g.drawLine(iX(xA), iY(yA), iX(xB), iY(yB));
+    g.drawLine(iX(xB), iY(yB), iX(xC), iY(yC));
+    g.drawLine(iX(xC), iY(yC), iX(xA), iY(yA));
+    xA1 = p * xA + q * xB;
+    yA1 = p * yA + q * yB;
+    xB1 = p * xB + q * xC;
+    yB1 = p * yB + q * yC;
+    xC1 = p * xC + q * xA;
+    yC1 = p * yC + q * yA;
+    xA = xA1; xB = xB1; xC = xC1;
+    yA = yA1; yB = yB1; yC = yC1;
+    }
+    }
+    }
+
    /* this.drawLine(this.iX(-3), this.iY(0), this.iX(3), this.iY(0));
     this.drawLine(this.iX(0), this.iY(2), this.iX(0), this.iY(-2));
 

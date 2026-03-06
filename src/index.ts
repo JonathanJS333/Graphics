@@ -1,10 +1,7 @@
 import { CanvasLocal } from './canvasLocal.js';
 
-let canvas: HTMLCanvasElement;
-let graphics: CanvasRenderingContext2D;
-
-canvas = <HTMLCanvasElement>document.getElementById('circlechart');
-graphics = canvas.getContext('2d');
+const canvas = document.getElementById('circlechart') as HTMLCanvasElement;
+const graphics = canvas.getContext('2d') as CanvasRenderingContext2D;
 
 const miCanvas:CanvasLocal = new CanvasLocal(graphics, canvas);
 

@@ -23,9 +23,49 @@ export class CanvasLocal {
       return Math.sin(x*2.5);
     }*/
     paint() {
-        this.drawLine(100.5, 100, 500, 100.5);
-        this.drawLine(500, 100, 300, 400);
-        this.drawLine(300, 400, 100, 100);
+        // limpia
+        this.graphics.clearRect(0, 0, this.maxX + 1, this.maxY + 1);
+        this.graphics.strokeStyle = 'black'; // estilo
+        this.graphics.lineWidth = 1;
+        const size = Math.min(this.maxX, this.maxY) * 0.8;
+        const half = size / 2;
+        let xA = this.centerX - half;
+        let yA = this.centerY - half;
+        let xB = this.centerX + half;
+        let yB = this.centerY - half;
+        let xC = this.centerX + half;
+        let yC = this.centerY + half;
+        let xD = this.centerX - half;
+        let yD = this.centerY + half;
+        const q = 0.05;
+        const p = 1 - q;
+        for (let i = 0; i < 50; i++) {
+            // dibujar cuadrado
+            this.graphics.beginPath();
+            this.graphics.moveTo(xA, yA);
+            this.graphics.lineTo(xB, yB);
+            this.graphics.lineTo(xC, yC);
+            this.graphics.lineTo(xD, yD);
+            this.graphics.closePath();
+            this.graphics.stroke();
+            // calcula el siguiente cuadrado (inset)
+            const xA1 = p * xA + q * xB;
+            const yA1 = p * yA + q * yB;
+            const xB1 = p * xB + q * xC;
+            const yB1 = p * yB + q * yC;
+            const xC1 = p * xC + q * xA;
+            const yC1 = p * yC + q * yA;
+            const xD1 = p * xD + q * xA;
+            const yD1 = p * yD + q * yA;
+            xA = xA1;
+            yA = yA1;
+            xB = xB1;
+            yB = yB1;
+            xC = xC1;
+            yC = yC1;
+            xD = xD1;
+            yD = yD1;
+        }
         /* this.drawLine(this.iX(-3), this.iY(0), this.iX(3), this.iY(0));
          this.drawLine(this.iX(0), this.iY(2), this.iX(0), this.iY(-2));
      
