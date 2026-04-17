@@ -1,7 +1,82 @@
-#footer{
-    background: linear-gradient(0deg,#1c3643,#273b47 25%,#1e5372);
-  }
-  
-  #footer a{
-    color: #FFFFFF;
-  }
+:root {
+  --bg-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --primary-accent: #2c3e50;
+  --secondary-accent: #34495e;
+  --text-main: #2d3436;
+  --border-subtle: rgba(0,0,0,0.05);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* Navbar Minimalista */
+.navbar {
+  background-color: var(--card-bg) !important;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 1rem 2rem;
+}
+
+.navbar-brand, .nav-link {
+  color: var(--primary-accent) !important;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+/* Card y Canvas */
+.card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  margin-top: 3rem;
+  background: var(--card-bg);
+}
+
+.card-header {
+  background: transparent;
+  border-bottom: 1px solid var(--border-subtle);
+  font-weight: 600;
+  color: var(--secondary-accent);
+}
+
+#circlechart {
+  background-color: #ffffff;
+  margin: 20px 0;
+}
+
+/* Footer Atractivo */
+#footer {
+  background: var(--primary-accent);
+  color: #ecf0f1;
+  margin-top: 5rem;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+
+#footer a {
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.85rem;
+}
+
+#footer a:hover {
+  color: #ffffff;
+}
+
+/* Botón Minimalista */
+.btn-primary {
+  background-color: var(--primary-accent);
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-accent);
+}
