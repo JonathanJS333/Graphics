@@ -22,6 +22,7 @@ export class CanvasLocal {
     this.centerY = this.maxY/2;
   }
 
+<<<<<<< Updated upstream
   /*iX(x: number):number{return Math.round(this.centerX + x/this.pixelSize);}
   iY(y: number): number{ return Math.round(this.centerY - y / this.pixelSize); }
   */
@@ -213,4 +214,34 @@ export class CanvasLocal {
     
   }
 
+=======
+    public constructor(g: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
+        this.graphics = g;
+        this.rWidth = 12;
+        this.rHeight = 8;
+        this.maxX = canvas.width - 1;
+        this.maxY = canvas.height - 1;
+        this.pixelSize = Math.max(this.rWidth / this.maxX, this.rHeight / this.maxY);
+        // Ajustamos los centros para que la gráfica horizontal tenga espacio a la izquierda
+        this.centerX = this.maxX / 10; 
+        this.centerY = this.maxY / 10; 
+    }
+
+    /*iX(x: number): number { return Math.round(this.centerX + x / this.pixelSize); }
+    iY(y: number): number { return Math.round(this.centerY + y / this.pixelSize); }
+    */
+    drawLine(x1: number, y1: number, x2: number, y2: number) {
+        this.graphics.beginPath();
+        this.graphics.moveTo(x1, y1);
+        this.graphics.lineTo(x2, y2);
+        this.graphics.stroke();
+    }
+
+
+paint() {
+    this.drawLine(100.5,100, 500,100.5);
+    this.drawLine(500, 100, 300, 400);
+    this.drawLine(300, 400, 100,100);
+}
+>>>>>>> Stashed changes
 }

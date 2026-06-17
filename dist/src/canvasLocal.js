@@ -9,13 +9,19 @@ export class CanvasLocal {
         this.centerX = this.maxX / 2;
         this.centerY = this.maxY / 2;
     }
+<<<<<<< Updated upstream
     /*iX(x: number):number{return Math.round(this.centerX + x/this.pixelSize);}
     iY(y: number): number{ return Math.round(this.centerY - y / this.pixelSize); }
+=======
+    /*iX(x: number): number { return Math.round(this.centerX + x / this.pixelSize); }
+    iY(y: number): number { return Math.round(this.centerY + y / this.pixelSize); }
+>>>>>>> Stashed changes
     */
     drawLine(x1, y1, x2, y2) {
         this.graphics.beginPath();
         this.graphics.moveTo(x1, y1);
         this.graphics.lineTo(x2, y2);
+<<<<<<< Updated upstream
         this.graphics.closePath();
         this.graphics.stroke();
     }
@@ -157,5 +163,13 @@ export class CanvasLocal {
             xA = xA1; xB = xB1; xC = xC1;
             yA = yA1; yB = yB1; yC = yC1;
         } */
+=======
+        this.graphics.stroke();
+    }
+    paint() {
+        this.drawLine(100.5, 100, 500, 100.5);
+        this.drawLine(500, 100, 300, 400);
+        this.drawLine(300, 400, 100, 100);
+>>>>>>> Stashed changes
     }
 }
