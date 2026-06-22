@@ -8,35 +8,10 @@ function getElement<T extends HTMLElement>(id: string): T {
   return element as T;
 }
 
-const canvas =getElement<HTMLCanvasElement>('viewer-canvas');
+const canvas = getElement<HTMLCanvasElement>('viewer-canvas');
 const canvasContainer = getElement<HTMLDivElement>('canvas-container');
 const drawingContext = canvas.getContext('2d', { alpha: true });
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-miCanvas.paint();
-=======
-// Ahora el paint se ejecuta cuando el usuario hace clic
-boton.addEventListener('click', () => {
-    const valoresTexto = inputDatos.value;
-    if (valoresTexto.trim() === "") {
-        alert("Por favor ingresa algunos números");
-        return;
-    }
-    
-    // Convertimos el string en un array de números
-    const h = valoresTexto.split(',').map(val => Number(val.trim()));
-    
-    // Validamos que sean números válidos
-    if (h.some(isNaN)) {
-        alert("Asegúrate de ingresar solo números separados por comas");
-        return;
-    }
-
-    miCanvas.paint(); // Le pasamos los datos al paint
-});
->>>>>>> Stashed changes
-=======
 if (drawingContext === null) {
   throw new Error('El navegador no pudo crear el contexto 2D.');
 }
@@ -405,4 +380,3 @@ loadModel(DEFAULT_MODEL, 'Modelo de demostración');
 resizeCanvas();
 updatePlayButton();
 requestAnimationFrame(renderFrame);
->>>>>>> Stashed changes
