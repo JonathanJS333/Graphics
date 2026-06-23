@@ -1,4 +1,4 @@
-import { DEFAULT_MODEL } from './sampleModel.js';
+import { DEFAULT_MODEL } from './Modelodeejemplo.js';
 import { Model3D } from './Model3D.js';
 import { RenderMode, SoftwareRenderer } from './Renderer.js';
 
