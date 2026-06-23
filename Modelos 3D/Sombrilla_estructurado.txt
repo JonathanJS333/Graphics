@@ -1,4 +1,3 @@
-export const DEFAULT_MODEL = `
 # Archivo generado automáticamente
 
 
@@ -1014,4 +1013,3 @@ Faces:
 529 534 530.
 535 532 533 536.
 # Fin de caras
-`;
