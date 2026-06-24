@@ -10,25 +10,11 @@
 <body>
   <header class="topbar">
     <a class="brand" href="#" aria-label="Graphics Viewer">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" role="img">
-          <path d="M12 2 21 7v10l-9 5-9-5V7l9-5Zm0 2.4L5.4 8 12 11.6 18.6 8 12 4.4Zm-7 5.3v6.1l6 3.3V13L5 9.7Zm8 9.4 6-3.3V9.7L13 13v6.1Z"/>
-        </svg>
-      </span>
       <span>
         <strong>Graphics Proyecto de Graficación</strong>
         <small>Visor</small>
       </span>
     </a>
-
-    <div class="topbar-actions">
-      <button class="button button-ghost" id="load-demo" type="button">Ejemplo</button>
-      <button class="button button-primary" id="open-file" type="button">
-        <span aria-hidden="true">＋</span>
-        Abrir modelo
-      </button>
-      <input id="file-input" type="file" accept=".txt,.dat,text/plain" hidden>
-    </div>
   </header>
 
   <main class="workspace">
@@ -38,24 +24,20 @@
           <span class="live-dot" aria-hidden="true"></span>
           <div>
             <strong id="status-text">Preparando visor…</strong>
-            <span id="model-info">Sin información</span>
           </div>
         </div>
 
         <div class="toolbar-controls">
           <label class="compact-field">
-            <span>Visualización</span>
+            <span>Vista del modelo</span>
             <select id="render-mode">
-              <option value="wireframe">Alámbrico</option>
-              <option value="hidden" selected>Líneas ocultas</option>
-              <option value="zbuffer">Z-buffer</option>
+              <option value="wireframe">Solo líneas</option>
+              <option value="hidden" selected>Ocultar líneas traseras</option>
+              <option value="zbuffer">Modelo relleno</option>
             </select>
           </label>
 
-          <button class="button button-play" id="play-pause" type="button" aria-pressed="false">
-            <span aria-hidden="true">▶</span>
-            <span>Reproducir</span>
-          </button>
+          <button class="button button-play" id="play-pause" type="button" aria-pressed="false">Reproducir</button>
         </div>
       </div>
 
@@ -70,6 +52,12 @@
         <div class="canvas-help">
           Arrastra para rotar · Rueda para acercar · Shift + arrastrar para mover la pieza
         </div>
+      </div>
+
+      <div class="viewer-actions" aria-label="Opciones para cargar modelos">
+        <button class="button button-ghost" id="load-demo" type="button">Ejemplo</button>
+        <button class="button button-primary" id="open-file" type="button">Abrir modelo</button>
+        <input id="file-input" type="file" accept=".txt,.dat,text/plain" hidden>
       </div>
     </section>
 
@@ -92,15 +80,14 @@
 
       <section class="control-section">
         <div class="section-heading">
-          <span>Vista</span>
-          <small>Cámara</small>
+          <span>Cámara</span>
+          <small>Mover la vista</small>
         </div>
         <div class="direction-pad">
-          <button id="view-up" type="button" aria-label="Vista arriba">↑</button>
-          <button id="view-left" type="button" aria-label="Vista izquierda">←</button>
-          <button id="reset-view" class="pad-center" type="button" aria-label="Restablecer vista">●</button>
-          <button id="view-right" type="button" aria-label="Vista derecha">→</button>
-          <button id="view-down" type="button" aria-label="Vista abajo">↓</button>
+          <button id="view-up" type="button" aria-label="Mover vista hacia arriba">↑</button>
+          <button id="view-left" type="button" aria-label="Mover vista hacia la izquierda">←</button>
+          <button id="view-right" type="button" aria-label="Mover vista hacia la derecha">→</button>
+          <button id="view-down" type="button" aria-label="Mover vista hacia abajo">↓</button>
         </div>
         <div class="button-row">
           <button class="mini-button" id="zoom-out" type="button">− Alejar</button>

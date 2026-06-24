@@ -24,7 +24,6 @@ const speedInput = getElement('animation-speed');
 const speedValue = getElement('speed-value');
 const renderModeSelect = getElement('render-mode');
 const statusText = getElement('status-text');
-const modelInfo = getElement('model-info');
 const pieceSelect = getElement('piece-select');
 const pieceRotationAxis = getElement('piece-rotation-axis');
 const modelRotationAxis = getElement('model-rotation-axis');
@@ -47,9 +46,6 @@ function setStatus(message, error = false) {
 }
 function refreshModelInformation() {
     const pieces = model.getPieces();
-    modelInfo.textContent =
-        `${model.getVertexCount()} vértices · ${model.getFaceCount()} caras · ` +
-            `${pieces.length} ${pieces.length === 1 ? 'pieza' : 'piezas'}`;
     pieceSelect.replaceChildren();
     pieces.forEach((piece, index) => {
         const option = document.createElement('option');
@@ -93,9 +89,7 @@ async function loadFile(file) {
 function updatePlayButton() {
     playPauseButton.dataset.playing = String(playing);
     playPauseButton.setAttribute('aria-pressed', String(playing));
-    playPauseButton.innerHTML = playing
-        ? '<span aria-hidden="true">Ⅱ</span><span>Pausar</span>'
-        : '<span aria-hidden="true">▶</span><span>Reproducir</span>';
+    playPauseButton.textContent = playing ? 'Pausar' : 'Reproducir';
 }
 function togglePlayback() {
     playing = !playing;
@@ -159,10 +153,10 @@ speedInput.addEventListener('input', () => {
 renderModeSelect.addEventListener('change', () => {
     renderMode = renderModeSelect.value;
     setStatus(renderMode === 'wireframe'
-        ? 'Modo alámbrico.'
+        ? 'Vista de solo líneas.'
         : renderMode === 'hidden'
-            ? 'Modo de líneas ocultas.'
-            : 'Modo Z-buffer.');
+            ? 'Líneas traseras ocultas.'
+            : 'Modelo relleno.');
     requestRender();
 });
 pieceSelect.addEventListener('change', () => {
@@ -180,7 +174,6 @@ bindClick('view-up', () => model.orbitCamera(0, -0.1));
 bindClick('view-down', () => model.orbitCamera(0, 0.1));
 bindClick('zoom-in', () => model.zoomCamera(0.82));
 bindClick('zoom-out', () => model.zoomCamera(1.22));
-bindClick('reset-view', () => model.resetView());
 bindClick('model-x-minus', () => model.translateModel(-modelStep(), 0, 0));
 bindClick('model-x-plus', () => model.translateModel(modelStep(), 0, 0));
 bindClick('model-y-minus', () => model.translateModel(0, -modelStep(), 0));
